@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Friend Finder</title>
+
+    <!-- reset -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <!-- end reset -->
+
+    <!-- Bootstrap and Jquery - Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- Font Awesome Glyphicons -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+</head>
+
+<body>
+<div class="container-fluid">
+
+    <div class="row">
+        <!-- left side spacer -->
+        <div class="container-inner col-md-1 col-sm-0"></div>
+
+        <!-- Inner Container for page -->
+        <div class="container-inner col-md-10 col-sm-12">
+
+            <h1>Survey Questions</h1>
+
+            <hr>
+
+            <!-- FORM block -->
+            <div class="row">
+                
+                <form id="userSurvey">
+
+                    <h3>About You</h3>
+                    <div class="form-group">
+                        <label for="user-name">Name (Required)</label>
+                        <input type="text" class="form-control" id="user-name" name="user-name" required="">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="user-phone">Link to Photo (Required)</label>
+                        <input id="photo" name="photo" class="form-control" required="" type="text">
+                    </div>
+
+                    <hr>
+
+                    <h3>Now, please answer a few questions so we can match you up with friends!</h3>
+
+                    <!-- THIS SECTION FIX LATER- add drop-down menus etc. -->
+                    <div class="form-group">
+                        <label for="user-email">Email address</label>
+                        <input type="email" class="form-control" id="user-email" placeholder="Enter email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="unique-id">Unique ID</label>
+                        <input type="text" class="form-control" name="unique-id" id="unique-id" placeholder="">
+                    </div>
+
+                    <button type="submit" id="add-btn" class="btn btn-primary">Submit</button>
+                </form>
+
+                        
+            </div>
+            <!-- END FORM block -->
+
+            <hr />
+
+            <!-- footer block -->
+            <footer class="row">
+                <div class="col-md-12">
+                    <p>
+                        <a href="/api/friends">API Friends List</a> |
+                        <a href="#">GitHub Repo</a>
+                    </p>
+                </div>
+            </footer>
+            <!-- END footer block -->
+
+        <!-- END Inner Container for page (div below) -->
+        </div> 
+
+        <!-- right side spacer -->
+        <div class="container-inner col-md-1 col-sm-0"></div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
