@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Friend Finder</title>
+
+    <!-- reset -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <!-- end reset -->
+
+    <!-- bootstrap links including stylesheet-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <!-- end bootstrap links -->
+
+    <!-- jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+<div class="container-fluid">
+
+    <div class="row">
+        <!-- left side spacer -->
+        <div class="container-inner col-md-1 col-sm-0"></div>
+
+        <!-- Inner Container for page -->
+        <div class="container-inner col-md-10 col-sm-12">
+
+            <!-- header block -->
+            <header class="row">
+                <div class="col-md-12">
+                    <div class="jumbotron text-center m-3">
+                        <h1 class="text-center">
+                            Friend Finder
+                        </h1>
+
+                        <hr>
+
+                        <p class="text-center">
+                            Answer a few basic questions.
+                            Then find the friend with the greatest compatibility!
+                        </p>
+                        <p class="text-center">
+                            <a id="view-tables-btn" class="btn btn-primary btn-large m-1" href="/view">View Tables</a> 
+                            <a id="make-res-btn" class="btn btn-danger btn-large m-1" href="/make">Make Reservation</a>
+                        </p>
+                    </div>
+                </div>
+            </header>
+            <!-- END header block -->
+
+            <!-- footer block -->
+            <footer class="row">
+                <div class="col-md-12">
+                    <p>
+                        <a href="/api/tables">API Table Link</a> |
+                        <a href="/api/waitlist">API Wait List</a> |
+                        <a href="#">GitHub Repo</a>
+                    </p>
+                </div>
+            </footer>
+            <!-- END footer block -->
+
+        <!-- END Inner Container for page (div below) -->
+        </div> 
+
+        <!-- right side spacer -->
+        <div class="container-inner col-md-1 col-sm-0"></div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
