@@ -48,24 +48,45 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="user-phone">Link to Photo (Required)</label>
-                        <input id="photo" name="photo" class="form-control" required="" type="text">
+                        <label for="photo">Link to Photo (Required)</label>
+                        <input id="photo" name="photo" class="form-control" required="" type="url">
                     </div>
 
                     <hr>
 
                     <h3>Now, please answer a few questions so we can match you up with friends!</h3>
+                    <p>Select how much you agree with each statement on a scale of 1-5. </p>
+                    <p>
+                    1 = Strongly Agree <br>
+                    2 = Agree <br>
+                    3 = Neutral <br>
+                    4 = Disagree <br>
+                    5 = Strongly Disagree <br>
+                    </p>
 
                     <!-- THIS SECTION FIX LATER- add drop-down menus etc. -->
-                    <div class="form-group">
-                        <label for="user-email">Email address</label>
-                        <input type="email" class="form-control" id="user-email" placeholder="Enter email">
-                    </div>
 
-                    <div class="form-group">
-                        <label for="unique-id">Unique ID</label>
-                        <input type="text" class="form-control" name="unique-id" id="unique-id" placeholder="">
-                    </div>
+                        <!-- <div class="form-group form-row">
+                            
+                            <div class="col-sm-2">
+                                <input id="q1" name="q1" class="form-control" type="number" placeholder="" step="1" min="1" max="5" />
+                            </div>
+                                <label for="q1" class="col-sm-10 col-form-label">Lorem question</label>
+                                             
+                        </div> -->
+                        
+                        
+
+                        <!-- <select id="q1" type="number" class="form-control custom-select">
+                            <option selected>Select 1-5</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select> -->
+                    <!-- </div> -->
+
 
                     <button type="submit" id="add-btn" class="btn btn-primary">Submit</button>
                 </form>
