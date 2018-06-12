@@ -127,7 +127,7 @@
                     </div>
 
 
-                    <button type="submit" id="add-btn" class="btn btn-primary">Submit</button>
+                    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
                 </form>
 
                         
@@ -161,54 +161,58 @@
 <script type="text/javascript">
 
 //wrap these in an onclick event
+$("#submit").on("click", function(event) {
+    event.preventDefault();
+
     // grab the form elements and save them in key:value pairs within an object
     var newSurveyResponse = {
-        "name": $("#user-name").val().trim(),
-        "photo": $("#photo").val().trim(),
-        "scores": [
-            $("#q1").val(),
-            $("#q2").val(),
-            $("#q3").val(),
-            $("#q4").val(),
-            $("#q5").val(),
-            $("#q6").val(),
-            $("#q7").val(),
-            $("#q8").val(),
-            $("#q9").val(),
-            $("#q10").val()        
-        ]
-    }
+        name: $("#user-name").val().trim(),
+        photo: $("#photo").val().trim()
+        // "scores": [
+        //     $("#q1").val(),
+        //     $("#q2").val(),
+        //     $("#q3").val(),
+        //     $("#q4").val(),
+        //     $("#q5").val(),
+        //     $("#q6").val(),
+        //     $("#q7").val(),
+        //     $("#q8").val(),
+        //     $("#q9").val(),
+        //     $("#q10").val()        
+        // ]
+    };
 
     console.log(newSurveyResponse);
     
-    // export the object
-    $.post("/api/friends", newSurveyResponse,
-        function(data) { //function receives the result of the post function
-            if(data) {
-                // if a friend match is correctly returned from the post function
-                console.log("This is the matched friend response: " + data);
-                // then pop up the modular window, or just load a new page displaying the data of the matching friend
-            }
+    // // export the object
+    // $.post("/api/friends", newSurveyResponse,
+    //     function(data) { //function receives the result of the post function
+    //         if(data) {
+    //             // if a friend match is correctly returned from the post function
+    //             console.log("This is the matched friend response: " + JSON.parse(data));
+    //             // then pop up the modular window, or just load a new page displaying the data of the matching friend
+    //         }
            
-           else {
-               alert("Sorry, an error prevented us from matching you with a friend. Please try again or return to the home page.");
-           }
+    //        else {
+    //            alert("Sorry, an error prevented us from matching you with a friend. Please try again or return to the home page.");
+    //        }
             
-});
+    // });
 
     // Clear the form when submitting
-    $("#user-name").val("");
-    $("#photo").val("");
-    $("#q1").val("");
-    $("#q2").val("");
-    $("#q3").val("");
-    $("#q4").val("");
-    $("#q5").val("");
-    $("#q6").val("");
-    $("#q7").val("");
-    $("#q8").val("");
-    $("#q9").val("");
-    $("#q10").val("");
+    // $("#user-name").val("");
+    // $("#photo").val("");
+    // $("#q1").val("");
+    // $("#q2").val("");
+    // $("#q3").val("");
+    // $("#q4").val("");
+    // $("#q5").val("");
+    // $("#q6").val("");
+    // $("#q7").val("");
+    // $("#q8").val("");
+    // $("#q9").val("");
+    // $("#q10").val("");
+});
 
 </script>
 
