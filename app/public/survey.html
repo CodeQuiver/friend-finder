@@ -39,7 +39,7 @@
             <!-- FORM block -->
             <div class="row">
                 
-                <form id="userSurvey">
+                <form id="userSurvey" class="col-md-12">
 
                     <h3>About You</h3>
                     <div class="form-group">
@@ -61,31 +61,70 @@
                     2 = Agree <br>
                     3 = Neutral <br>
                     4 = Disagree <br>
-                    5 = Strongly Disagree <br>
+                    5 = Strongly Disagree <br> <br>
                     </p>
 
                     <!-- THIS SECTION FIX LATER- add drop-down menus etc. -->
 
-                        <!-- <div class="form-group form-row">
-                            
-                            <div class="col-sm-2">
-                                <input id="q1" name="q1" class="form-control" type="number" placeholder="" step="1" min="1" max="5" />
-                            </div>
-                                <label for="q1" class="col-sm-10 col-form-label">Lorem question</label>
-                                             
-                        </div> -->
-                        
-                        
+                    <div class="form-group">
+                        <label for="q1">Question 1:</label>
+                        <p>When I have free time, I prefer to go out over staying in.</p>
+                        <input id="q1" name="q1" class="form-control" required="" type="number" step="1" min="1" max="5" style="min-width: 50px; max-width: 140px;">
+                    </div>
 
-                        <!-- <select id="q1" type="number" class="form-control custom-select">
-                            <option selected>Select 1-5</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select> -->
-                    <!-- </div> -->
+                    <div class="form-group">
+                        <label for="q2">Question 2:</label>
+                        <p>Cats are waaay better than dogs.</p>
+                        <input id="q2" name="q2" class="form-control" required="" type="number" step="1" min="1" max="5" style="min-width: 50px; max-width: 140px;">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="q3">Question 3:</label>
+                        <p>I prefer to go somewhere new and far away for vacation like another country instead of somewhere closer to home and relaxing like the beach.</p>
+                        <input id="q3" name="q3" class="form-control" required="" type="number" step="1" min="1" max="5" style="min-width: 50px; max-width: 140px;">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="q4">Question 4:</label>
+                        <p>I hate long walks on the beach- I'd rather go swimming! I can take walks at home!</p>
+                        <input id="q4" name="q4" class="form-control" required="" type="number" step="1" min="1" max="5" style="min-width: 50px; max-width: 140px;">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="q5">Question 5:</label>
+                        <p>I prefer coffee over tea.</p>
+                        <input id="q5" name="q5" class="form-control" required="" type="number" step="1" min="1" max="5" style="min-width: 50px; max-width: 140px;">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="q6">Question 6:</label>
+                        <p>I'm usually on time to events with friends.</p>
+                        <input id="q6" name="q6" class="form-control" required="" type="number" step="1" min="1" max="5" style="min-width: 50px; max-width: 140px;">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="q7">Question 7:</label>
+                        <p>I enjoy singing in public.</p>
+                        <input id="q7" name="q7" class="form-control" required="" type="number" step="1" min="1" max="5" style="min-width: 50px; max-width: 140px;">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="q8">Question 8:</label>
+                        <p>I like to relax with a good book in my free time.</p>
+                        <input id="q8" name="q8" class="form-control" required="" type="number" step="1" min="1" max="5" style="min-width: 50px; max-width: 140px;">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="q9">Question 9:</label>
+                        <p>I don't dance- don't ask me.</p>
+                        <input id="q9" name="q9" class="form-control" required="" type="number" step="1" min="1" max="5" style="min-width: 50px; max-width: 140px;">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="q10">Question 10:</label>
+                        <p>I'm usually the life of the party.</p>
+                        <input id="q10" name="q10" class="form-control" required="" type="number" step="1" min="1" max="5" style="min-width: 50px; max-width: 140px;">
+                    </div>
 
 
                     <button type="submit" id="add-btn" class="btn btn-primary">Submit</button>
@@ -117,6 +156,52 @@
     </div>
 
 </div>
+
+<!-- JAVASCRIPT HERE -->
+<script type="text/javascript">
+
+//wrap these in an onclick event
+    // grab the form elements and save them in key:value pairs within an object
+    var newSurveyResponse = {
+        "name": $("#user-name").val().trim(),
+        "photo": $("#photo").val().trim(),
+        "scores": [
+            $("#q1").val(),
+            $("#q2").val(),
+            $("#q3").val(),
+            $("#q4").val(),
+            $("#q5").val(),
+            $("#q6").val(),
+            $("#q7").val(),
+            $("#q8").val(),
+            $("#q9").val(),
+            $("#q10").val()        
+        ]
+    }
+    
+    // export the object
+    $.post("/api/friends", newSurveyResponse,
+        function(data) {
+            // this calls the result of the function in the POST route in apiRoutes- that result is the matching user
+            // if no error
+            // then pop up the modular window, or just load a new page displaying the data of the matching friend
+});
+
+    // Clear the form when submitting
+    $("#user-name").val("");
+    $("#photo").val("");
+    $("#q1").val("");
+    $("#q2").val("");
+    $("#q3").val("");
+    $("#q4").val("");
+    $("#q5").val("");
+    $("#q6").val("");
+    $("#q7").val("");
+    $("#q8").val("");
+    $("#q9").val("");
+    $("#q10").val("");
+
+</script>
 
 </body>
 
