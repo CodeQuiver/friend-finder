@@ -178,13 +178,22 @@
             $("#q10").val()        
         ]
     }
+
+    console.log(newSurveyResponse);
     
     // export the object
     $.post("/api/friends", newSurveyResponse,
-        function(data) {
-            // this calls the result of the function in the POST route in apiRoutes- that result is the matching user
-            // if no error
-            // then pop up the modular window, or just load a new page displaying the data of the matching friend
+        function(data) { //function receives the result of the post function
+            if(data) {
+                // if a friend match is correctly returned from the post function
+                console.log("This is the matched friend response: " + data);
+                // then pop up the modular window, or just load a new page displaying the data of the matching friend
+            }
+           
+           else {
+               alert("Sorry, an error prevented us from matching you with a friend. Please try again or return to the home page.");
+           }
+            
 });
 
     // Clear the form when submitting
