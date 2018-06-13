@@ -8,7 +8,7 @@ var friendData = require("../data/friends");
 // ROUTING
 // ===============================================================================
 
-module.exports = function(app) {
+var apiRoutingFunctions = function(app) {
 
     // API GET Requests
     app.get("/api/friends", function(req, res) {
@@ -19,8 +19,6 @@ module.exports = function(app) {
 
     app.post("/api/friends", function(req, res) {
         var currentUser = req.body; //sets name for user who entered request for clarity
-
-        friendData.push(currentUser); // push current user data to frienddata array in friends.js file
 
         // ========Begin Comparison of Survey Responses HERE========//
         var bestFriendScore = 99999999;
@@ -46,6 +44,11 @@ module.exports = function(app) {
 
         var bestFriend = friendData[bestFriendIndex]; //Final Result of comparison- best matching friend
         res.json(bestFriend); // Send the bestFriend entry back as a response in json format
-    });
 
+        friendData.push(currentUser); // push current user data to frienddata array in friends.js file- this must be done after the above otherwise you'll end up returning the user as their own best match since they'll be an option in the friendData array
+    });
 };
+
+// Exporting function expression- now accessible via require
+// I prefer doing it this way (at the bottom of the file) for consistency and to avoid unnamed functions.
+module.exports = apiRoutingFunctions;
