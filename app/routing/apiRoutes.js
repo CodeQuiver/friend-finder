@@ -15,19 +15,14 @@ module.exports = function(app) {
         res.json(friendData);
     });
 
-    // API POST Requests
-    // Below code handles when a user submits a form and thus submits data to the server.
-    // In each of the below cases, when a user submits form data (a JSON object)
-    // ...the JSON is pushed to the appropriate JavaScript array
+    // API POST Requests - handles when a user submits a form
+
     app.post("/api/friends", function(req, res) {
-        var currentUser = req.body; //set name for user who entered request for clarity
+        var currentUser = req.body; //sets name for user who entered request for clarity
 
-        
-        friendData.push(currentUser);
-        
-        // reference the entries in friend array using friendData[i] in a for loop
+        friendData.push(currentUser); // push current user data to frienddata array in friends.js file
 
-        // Math.abs(-7.25); reference- absolute value method
+        // ========Begin Comparison of Survey Responses HERE========//
         var bestFriendScore = 99999999;
         var bestFriendIndex = -1;
         
@@ -47,21 +42,10 @@ module.exports = function(app) {
                bestFriendScore = totalDiff;
            } // compare each entry in the array to the current best friend score. If the totalDiff is smaller that the current, replace the current with the new one and update the score. This eventually outputs the entry with the smallest totalDiff as bestFriendIndex
         }
+        // ========END Comparison of Survey Responses HERE========//
 
-        var bestFriend = friendData[bestFriendIndex];
-        res.json(bestFriend);
-        // this should send the bestFriend entry back to the page as a response, which will plug into the "data" argument
-
-
-        // push current user data to frienddata array in friends.js file- make sure this happens after the above function ends
-        // friendData.push(currentUser);
-
-        // log entire friends array to check it's correct
-        // console.log(res.json(friendData));
-    
-
-        // input function here to test compatibility with others in array? (per instructions)- come back to this
-        // Dont need this - return friendData[bestFriendIndex];
+        var bestFriend = friendData[bestFriendIndex]; //Final Result of comparison- best matching friend
+        res.json(bestFriend); // Send the bestFriend entry back as a response in json format
     });
 
 };
