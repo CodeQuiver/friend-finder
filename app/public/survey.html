@@ -127,7 +127,7 @@
                     </div>
 
 
-                    <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" id="submit" class="btn btn-primary" data-toggle="modal" data-target="#resultsModal">Submit</button>
                 </form>
 
                         
@@ -157,6 +157,30 @@
 
 </div>
 
+  
+  <!-- Modal -->
+  <div class="modal fade" id="resultsModal" tabindex="-1" role="dialog" aria-labelledby="resultsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title" id="resultsModalLabel">
+              Based on your survey, we think you should meet:
+            </h3>
+        </div>
+
+        <div class="modal-body text-center" id="resultsDiv">
+            <!-- MATCHING FRIEND RESULTS HERE -->
+          
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END MODAL -->
+
 <!-- JAVASCRIPT HERE -->
 <script type="text/javascript">
 
@@ -184,34 +208,49 @@ $("#submit").on("click", function(event) {
 
     console.log(newSurveyResponse);
     
-    // // export the object
-    // $.post("/api/friends", newSurveyResponse,
-    //     function(data) { //function receives the result of the post function
-    //         if(data) {
-    //             // if a friend match is correctly returned from the post function
-    //             console.log("This is the matched friend response: " + JSON.parse(data));
-    //             // then pop up the modular window, or just load a new page displaying the data of the matching friend
-    //         }
+    // export the object
+    $.post("/api/friends", newSurveyResponse,
+        function(data) { //function receives the result of the post function
+            if(data) {
+                // if a friend match is correctly returned from the post function
+
+                console.log("This is the matched friend response: " + JSON.stringify(data));
+                // This works!!
+                // storing each item to display in a variable
+                var matchName = $("<h2>").text(data.name);
+
+                // append the matchPhoto to an image src
+                var matchPhoto = $("<img>").attr("src", data.photo).attr("style", "max-width=80%; height=auto;");
+
+                // then append the data to the modal div #resultsDiv
+
+                var matchDiv = $("#resultsDiv");
+
+                matchDiv.append(matchPhoto).append(matchName);
+
+            }
            
-    //        else {
-    //            alert("Sorry, an error prevented us from matching you with a friend. Please try again or return to the home page.");
-    //        }
+           else {
+                var matchDiv = $("#resultsDiv");
+                matchDiv.text("Sorry, an error prevented us from matching you with a friend. Please try again or return to the home page.");
+                // alert("Sorry, an error prevented us from matching you with a friend. Please try again or return to the home page.");
+           }
             
-    // });
+    });
 
     // Clear the form when submitting
-    // $("#user-name").val("");
-    // $("#photo").val("");
-    // $("#q1").val("");
-    // $("#q2").val("");
-    // $("#q3").val("");
-    // $("#q4").val("");
-    // $("#q5").val("");
-    // $("#q6").val("");
-    // $("#q7").val("");
-    // $("#q8").val("");
-    // $("#q9").val("");
-    // $("#q10").val("");
+    $("#user-name").val("");
+    $("#photo").val("");
+    $("#q1").val("");
+    $("#q2").val("");
+    $("#q3").val("");
+    $("#q4").val("");
+    $("#q5").val("");
+    $("#q6").val("");
+    $("#q7").val("");
+    $("#q8").val("");
+    $("#q9").val("");
+    $("#q10").val("");
 });
 
 </script>
